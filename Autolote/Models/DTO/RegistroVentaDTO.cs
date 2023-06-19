@@ -15,5 +15,7 @@ namespace Autolote.Models.DTO
         public string? Capitalizacion { get; set; }
         public decimal TasaInteres { get; set; }
         public int AñosDelContrato { get; set; }
+        public string TipoDePago { get; set; }
+
     }
 }

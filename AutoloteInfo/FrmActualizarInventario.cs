@@ -45,8 +45,6 @@ namespace AutoloteInfo
                 Precio = double.Parse(txtPrecio.Text),
                 Estado = txtEstado.Text,
                 AñoFab = int.Parse(txtAñoFab.Text),
-                //Stock = int.Parse(txtStock.Text),
-                Color = txtColor.Text
             };
             using (var vehiculo = new HttpClient())
             {
@@ -100,6 +98,7 @@ namespace AutoloteInfo
                 }
             }
         }
+
 
         private async void ObtenerVehiculoxChasis(string? numeroChasis)
         {

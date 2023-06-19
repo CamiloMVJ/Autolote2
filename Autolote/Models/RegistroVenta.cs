@@ -21,14 +21,14 @@ namespace Autolote.Models
         public Vehiculo? Carro { get; set; }
         public int VehiculoId { get; set; }
         public decimal? Monto { get; set; }
+        public string TipoDePago { get; set; }
         public decimal? Cuota { get; set; }
         public string Capitalizacion { get; set; }
         public decimal TasaInteres { get; set; }
         public int AñosDelContrato { get; set; }
-        public decimal SaldoInsoluto { get; set; }
 
         public RegistroVenta() { }
-        public RegistroVenta(Cliente cliente, Vehiculo vehiculo, string capitalizacion, int añoscontrato)
+        public RegistroVenta(Cliente cliente, Vehiculo vehiculo, string capitalizacion, int añoscontrato, string pago)
         {
             Cliente = cliente;
             ClienteNombre = cliente.NombreCliente;
@@ -38,20 +38,24 @@ namespace Autolote.Models
             Monto = vehiculo.Precio;
             Capitalizacion = capitalizacion;
             AñosDelContrato = añoscontrato;
+            TipoDePago = pago;
         }
 
         public void CalcularCouta()
         {
-            int cantidadPagosAnual = 0;
-            int cantidadPagos = 0;
+            if (TipoDePago == "Credito")
+            {
+                int cantidadPagosAnual = 0;
+                int cantidadPagos = 0;
 
-            TasaInteres = Convert.ToDecimal(0.20M + 0.05M*(Convert.ToDecimal(AñosDelContrato)));
-            cantidadPagosAnual = CalcularPagosAnules();
-            cantidadPagos = cantidadPagosAnual * AñosDelContrato;
-            double tasa = Convert.ToDouble(TasaInteres);
-            //Calculo de la couta
-            decimal denominador = Convert.ToDecimal(1 - Math.Pow(1+tasa,-12));
-            Cuota = (Monto / denominador) * TasaInteres;
+                TasaInteres = Convert.ToDecimal(0.20M + 0.05M * (Convert.ToDecimal(AñosDelContrato)));
+                cantidadPagosAnual = CalcularPagosAnules();
+                cantidadPagos = cantidadPagosAnual * AñosDelContrato;
+                double tasa = Convert.ToDouble(TasaInteres);
+                //Calculo de la couta
+                decimal denominador = Convert.ToDecimal(1 - Math.Pow(1 + tasa, -12));
+                Cuota = (Monto / denominador) * TasaInteres; 
+            }
 
         }
 

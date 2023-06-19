@@ -15,10 +15,13 @@ namespace Autolote.Models.DTO
         [Required]
         public int AñoFab { get; set; }
         [Required]
-        public string Color { get; set; }
-        [Required]
         public string Descripcion { get; set; }
         [Required]
         public string Chasis { get; set; }
+        [Required]
+        public string Vendido { get; set; }
+        public byte[] Imagen { get; set; }
+
+
     }
 }

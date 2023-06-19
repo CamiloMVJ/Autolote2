@@ -9,6 +9,8 @@ namespace Autolote.Models.DTO
         public int VehiculoId { get; set; }
         public string Capitalizacion { get; set; }
         public int AñosDelContrato { get; set; }
+        public string TipoDePago { get; set; }
+
 
         public bool VerificarDatos()
         {

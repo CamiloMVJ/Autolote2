@@ -67,7 +67,7 @@ namespace Autolote.Controllers
             if (coche == null || cliente == null)
                 return BadRequest();
 
-            RegistroVenta modelo = new RegistroVenta(cliente, coche, registro.Capitalizacion, registro.AñosDelContrato);
+            RegistroVenta modelo = new RegistroVenta(cliente, coche, registro.Capitalizacion, registro.AñosDelContrato, registro.TipoDePago);
             modelo.CalcularCouta();
             await _RegistroRepos.Create(modelo);
 
@@ -112,7 +112,7 @@ namespace Autolote.Controllers
             if (coche == null || cliente == null)
                 return BadRequest();
 
-            RegistroVenta modelo = new RegistroVenta(cliente, coche, registro.Capitalizacion, registro.AñosDelContrato);
+            RegistroVenta modelo = new RegistroVenta(cliente, coche, registro.Capitalizacion, registro.AñosDelContrato, registro.TipoDePago);
             if (modelo.VerificarDatos())
                 return BadRequest();
             modelo.CalcularCouta();

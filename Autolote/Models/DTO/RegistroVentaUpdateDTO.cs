@@ -22,5 +22,6 @@ namespace Autolote.Models.DTO
         public decimal TasaInteres { get; set; }
         [Required]
         public int AñosDelContrato { get; set; }
+        public string TipoDePago { get; set; }
     }
 }

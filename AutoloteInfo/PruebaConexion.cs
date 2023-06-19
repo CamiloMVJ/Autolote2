@@ -35,7 +35,6 @@ namespace AutoloteInfo
                 Precio = double.Parse(txtPrecio.Text),
                 Estado = txtEstado.Text,
                 AñoFab = int.Parse(txtAñoFab.Text),
-                Color = txtColor.Text
             };
             using (var vehiculo = new HttpClient())
             {
@@ -95,10 +94,8 @@ namespace AutoloteInfo
                     //Se deserializa el contenido HTTP como un objeto de la clase "Vehiculo"
                     Vehiculo vehiculo = JsonConvert.DeserializeObject<Vehiculo>(Datos);
                     //Se reflejan los valores en cada textBox
-                    txtChasis.Text = vehiculo.Chasis;
                     txtMarca.Text = vehiculo.Marca;
                     txtAñoFab.Text = vehiculo.AñoFab.ToString();
-                    txtColor.Text = vehiculo.Color;
                     txtPrecio.Text = vehiculo.Precio.ToString();
                     txtDescripcion.Text = vehiculo.Descripcion.ToString();
                     txtEstado.Text = vehiculo.Estado;
@@ -129,13 +126,11 @@ namespace AutoloteInfo
         private async void ActualizarVehiculo(int vehiculoID)
         {
             Vehiculo vehiculo = new Vehiculo();
-            vehiculo.Chasis = txtChasis.Text;
             vehiculo.Marca = txtMarca.Text;
             vehiculo.Precio = decimal.Parse(txtPrecio.Text);
             vehiculo.Estado = txtEstado.Text;
             vehiculo.AñoFab = int.Parse(txtAñoFab.Text);
             vehiculo.Descripcion = txtDescripcion.Text;
-            vehiculo.Color = txtColor.Text;
             vehiculo.VehiculoId = idVehiculo;
 
             using (var client = new HttpClient())

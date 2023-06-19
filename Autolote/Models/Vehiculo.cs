@@ -12,13 +12,12 @@ namespace Autolote.Models
         public int VehiculoId { get; set; }
         [Required]
         public string Marca { get; set; }
-        public string Chasis { get; set; }
+        public string Motor { get; set; }
         public decimal Precio { get; set; }
         public string Estado { get; set; }
         public int AñoFab { get; set; }
-        public string Color { get; set; }
         public string Descripcion { get; set; }
-
         public byte[] Imagen { get; set; }
+        public string Vendido { get; set; }
     }
 }
